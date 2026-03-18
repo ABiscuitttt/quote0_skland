@@ -8,3 +8,10 @@ wheels/
 
 # Virtual environments
 .venv
+
+# custom
+logs/
+TOKEN.txt
+user_info.json
+uv.lock
+game_card.json
