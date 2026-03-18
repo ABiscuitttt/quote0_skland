@@ -1,0 +1,3 @@
+[submodule "skland_tool"]
+	path = skland_tool
+	url = https://gitee.com/FancyCabbage/skyland-auto-sign.git
