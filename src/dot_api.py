@@ -2,6 +2,8 @@ from typing import Literal, TypeAlias
 
 import requests
 
+domain = "https://dot.mindreset.tech/api/authV2/open"
+
 DitherType: TypeAlias = Literal["DIFFUSION", "ORDERED", "NONE"]
 DitherKernel: TypeAlias = Literal[
     "THRESHOLD",
@@ -23,7 +25,7 @@ def devices(token: str):
         "Content-Type": "application/json",
     }
     response = requests.get(
-        "https://dot.mindreset.tech/api/authV2/open/devices",
+        f"{domain}/devices",
         headers=headers,
     )
     return response.json()
@@ -35,7 +37,7 @@ def status(device_id: str, token: str):
         "Content-Type": "application/json",
     }
     response = requests.get(
-        f"https://dot.mindreset.tech/api/authV2/open/device/{device_id}/status",
+        f"{domain}/device/{device_id}/status",
         headers=headers,
     )
     return response.json()
@@ -47,7 +49,7 @@ def next(device_id: str, token: str):
         "Content-Type": "application/json",
     }
     response = requests.post(
-        f"https://dot.mindreset.tech//api/authV2/open/device/{device_id}/next",
+        f"{domain}/device/{device_id}/next",
         headers=headers,
     )
     return response.json()
@@ -61,7 +63,7 @@ def list_content(
         "Content-Type": "application/json",
     }
     response = requests.get(
-        f"https://dot.mindreset.tech/api/authV2/open/device/{device_id}/{taskType}/list",
+        f"{domain}/device/{device_id}/{taskType}/list",
         headers=headers,
     )
     return response.json()
@@ -99,7 +101,7 @@ def text(
     if taskKey:
         payload["taskKey"] = taskKey
     response = requests.post(
-        f"https://dot.mindreset.tech/api/authV2/open/device/{device_id}/text",
+        f"{domain}/device/{device_id}/text",
         headers=headers,
         json=payload,
     )
@@ -137,7 +139,7 @@ def image(
         payload["taskKey"] = taskKey
 
     response = requests.post(
-        f"https://dot.mindreset.tech/api/authV2/open/device/{device_id}/image",
+        f"{domain}/device/{device_id}/image",
         headers=headers,
         json=payload,
     )
