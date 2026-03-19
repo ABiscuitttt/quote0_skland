@@ -3,14 +3,16 @@ import os
 import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "skland_tool", "src"))
-import requests
+sys.dont_write_bytecode = True
 
-from skland_tool.src import skyland as skland
+import requests  # noqa: E402
+
+from skland_tool.src import skyland as skland  # noqa: E402
 
 
 def main():
     with open("user_info.json") as f:
-        user_info = json.load(f)
+        user_info = json.load(f)[1]
 
     uid = user_info["uid"]
     token = user_info["token"]
@@ -22,9 +24,6 @@ def main():
     game_card = get_game_card(uid)
     with open("game_card.json", "w") as f:
         json.dump(game_card, f, indent=4, ensure_ascii=False)
-
-    arknights_game_card = game_card["list"][0]
-    # TODO: 解析游戏卡片，获取明日方舟的游戏数据
 
 
 def init_http_local(token):
