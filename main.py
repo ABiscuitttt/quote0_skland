@@ -59,7 +59,8 @@ def main():
     img = draw_text("今日已签到", res, img)
     img.save("img_with_text.png", format="PNG")
 
-    # push_img("img_with_text.png")
+    print("正在推送图片...")
+    push_img("img_with_text.png")
 
 
 def read_res_from_log():
