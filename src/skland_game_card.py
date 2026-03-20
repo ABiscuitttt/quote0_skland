@@ -1,3 +1,10 @@
+import sys
+from pathlib import Path
+
+skland_tool_path = (Path(__file__).parent / "../skland_tool/src").resolve()
+
+sys.path.append(skland_tool_path.__str__())
+
 import requests  # noqa: E402
 
 from skland_tool.src import skyland as skland  # noqa: E402
